@@ -1,0 +1,30 @@
+name: crafty_path
+description: "An unofficial app to control Crafty S&B"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 0.0.1+1
+
+environment:
+  sdk: '3.4.4'
+
+dependencies:
+  wakelock_plus: 1.2.8
+  flutter_tts: 4.0.2
+  #workmanager: 0.5.2
+  syncfusion_flutter_charts: 26.2.9
+  syncfusion_flutter_sliders: 26.2.9
+  permission_handler: 11.3.1
+  loading_animation_widget: 1.2.1
+  universal_ble: 0.11.1
+  shared_preferences: 2.3.1
+  convert: 3.1.1
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 4.0.0
+
+flutter:  
+  uses-material-design: true
+
