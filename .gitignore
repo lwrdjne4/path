@@ -29,6 +29,10 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+.ios/
+.linux/
+.macos/
+.test/
 build/*
 !build/web
 # Symbolication related
