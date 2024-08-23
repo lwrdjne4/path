@@ -514,7 +514,7 @@ class _CraftyPathState extends State<CraftyPath> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,// Colors.orange.shade700,
+          backgroundColor: Colors.orange.shade700,
           title: const Text("Crafty Path"),
           centerTitle: true,
         ),
