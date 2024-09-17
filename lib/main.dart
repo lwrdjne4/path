@@ -11,47 +11,13 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io' show Platform;
 import 'dart:core';
-//import 'package:workmanager/workmanager.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
-/* @pragma('vm:entry-point')
-void callbackDispatcher() {
-  Workmanager().executeTask((task, inputData) async {
-    FlutterTts voicePing = FlutterTts();
-    int refreshTime = 10;
-    bool triger = false;
-
-    try {
-      await voicePing.setLanguage("en-US");
-      await voicePing.setVolume(0.1);
-      await voicePing.setPitch(0.5);
-      await voicePing.setSpeechRate(0.5);
-
-      while (true) {
-        await Future.delayed(Duration(seconds: refreshTime));
-        await voicePing.speak("$refreshTime");
-
-        if (_CraftyPathState.controller.hasListener) {
-          debugPrint(
-              "stream hash from background task: ${_CraftyPathState.controller.stream.hashCode}");
-          _CraftyPathState.controller.add(triger = !triger);
-        }
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-      return Future.value(false);
-    }
-  });
-} */
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const CraftyPath());
-  /*  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
-  Workmanager().registerOneOffTask("123", "taskName",
-      constraints: Constraints(
-          networkType: NetworkType.not_required, requiresBatteryNotLow: true)); */
+  runApp(const CraftyPath());  
 }
 
 class CraftyPath extends StatefulWidget {
@@ -99,8 +65,7 @@ class ChartData {
   final int battery;
 }
 
-class _CraftyPathState extends State<CraftyPath> {
-  // #region Vars
+class _CraftyPathState extends State<CraftyPath> { 
   dynamic sessionTimer;
   dynamic periodicTimer;
   String deviceID = "";
@@ -123,10 +88,6 @@ class _CraftyPathState extends State<CraftyPath> {
   List<ChartData> tempList = [];
   bool permissionErr = false;
   FlutterTts tts = FlutterTts();
-
-  // #endregion
-
-// #region Methods
 
   void onTimerUpdate(Timer timer) {
     if (!sessionStarted) {
@@ -395,8 +356,7 @@ class _CraftyPathState extends State<CraftyPath> {
       });
     }
   }
-
-  // #endregion
+  
 
   @override
   void initState() {
@@ -406,14 +366,7 @@ class _CraftyPathState extends State<CraftyPath> {
         slidersColor.add(Colors.blue);
       }
     }
-    super.initState();
-    /*  debugPrint("stream hash from InitState: ${controller.stream.hashCode}");
-    controller.stream.listen(
-      (event) {
-        event ? trigerColor = Colors.blue.shade900 : Colors.orange.shade900;
-        setState(() {});
-      },
-    ); */
+    super.initState();   
 
     tts = FlutterTts();
     tts.setLanguage("en-US");
@@ -480,7 +433,7 @@ class _CraftyPathState extends State<CraftyPath> {
                   height: 30,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.orange.shade700),
-                      //borderRadius: const BorderRadius.all(Radius.circular(5))),
+                      borderRadius: const BorderRadius.all(Radius.circular(5)),
                   ),
                   child: Slider(
                     thumbColor: Colors.orange.shade600,
