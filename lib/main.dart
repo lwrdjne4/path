@@ -382,6 +382,7 @@ class _CraftyPathState extends State<CraftyPath> {
           slidersValues[i] =
               value.getDouble('slidersValues[$i]') ?? sliderDefaultValue;
         }
+        sesionTime=value.getDouble('sesionTime') ?? sesionTime;
         setState(() {});
       },
     );
@@ -576,10 +577,11 @@ class _CraftyPathState extends State<CraftyPath> {
                       value: sesionTime,
                       onChanged: sessionStarted
                           ? null
-                          : (value) {
-                              setState(() {
-                                sesionTime = value;
-                              });
+                          : (value) async {                              
+                              sesionTime = value;
+                              final prefs = await SharedPreferences.getInstance();
+                              prefs.setDouble('sesionTime', sesionTime);
+                              setState(() {});
                             },
                     ),
                     Text("Sesion time: ${sesionTime.round()}s."),
