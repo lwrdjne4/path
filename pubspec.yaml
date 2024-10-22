@@ -9,7 +9,6 @@ environment:
 dependencies:
   wakelock_plus: 1.2.8
   flutter_tts: 4.0.2
-  #workmanager: 0.5.2
   syncfusion_flutter_charts: 26.2.9
   syncfusion_flutter_sliders: 26.2.9
   permission_handler: 11.3.1
