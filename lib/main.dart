@@ -434,7 +434,8 @@ class _CraftyPathState extends State<CraftyPath> {
                   height: 30,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.orange.shade700),
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
+                      borderRadius: const BorderRadius.all(Radius.circular(30),),
+
                   ),
                   child: Slider(
                     thumbColor: Colors.orange.shade600,
