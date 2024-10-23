@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:universal_ble/universal_ble.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -425,35 +426,31 @@ class _CraftyPathState extends State<CraftyPath> {
             flex: 1,
           ),
           Column(
-            children: [
-              Text(slidersValues.elementAt(i).round().toString()),
-              CraftyRotatedBox(
-                id: i,
-                quarterTurns: 3,
-                child: Container(
-                  height: 30,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.orange.shade700),
-                      borderRadius: const BorderRadius.all(Radius.circular(30),),
+            children: [              
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1,color: Colors.orange.shade600),
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
 
-                  ),
-                  child: Slider(
-                    thumbColor: Colors.orange.shade600,
-                    allowedInteraction: SliderInteraction.tapAndSlide,
-                    activeColor: slidersColor.elementAt(i),
-                    divisions: 10,
-                    max: 210,
-                    min: sliderDefaultValue,
-                    value: slidersValues.elementAt(i),
-                    onChanged: (value) async {
-                      slidersValues[i] = value;
-                      final prefs = await SharedPreferences.getInstance();
-                      prefs.setDouble('slidersValues[$i]', slidersValues[i]);
-                      setState(() {});
-                    },
-                  ),
+                ),
+                child: SfSlider.vertical(
+                      stepSize: 5,
+                      //thumbColor: Colors.orange.shade600,
+                      //allowedInteraction: SliderInteraction.tapAndSlide,
+                      activeColor: slidersColor.elementAt(i),
+                      //divisions: 10,
+                      max: 210,
+                      min: sliderDefaultValue,
+                      value: slidersValues.elementAt(i),
+                      onChanged: (value) async {
+                        slidersValues[i] = value;
+                        final prefs = await SharedPreferences.getInstance();
+                        prefs.setDouble('slidersValues[$i]', slidersValues[i]);
+                        setState(() {});
+                      },                                
                 ),
               ),
+              Text(slidersValues.elementAt(i).round().toString()),
             ],
           ),
           const Spacer(
