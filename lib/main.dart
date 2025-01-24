@@ -46,6 +46,9 @@ enum CharacteristicsUUID {
   heaterOff("00000091-4c45-4b43-4942-265a524f5453"), //W
   battery("00000041-4C45-4B43-4942-265A524F5453"); //R N( N not working)
 
+  //LEDBrightnessUUID("00000051-4C45-4B43-4942-265A524F5453");
+
+
   final String uuid;
   const CharacteristicsUUID(this.uuid);
 }
@@ -321,7 +324,7 @@ class _CraftyPathState extends State<CraftyPath> {
       connected = false;
       isConnecting = true;
     });
-
+  
     debugPrint("scannBle 2");
     UniversalBle.onConnectionChange = onConnectionChange;
     UniversalBle.onScanResult = onScanResult;
@@ -434,10 +437,10 @@ class _CraftyPathState extends State<CraftyPath> {
 
                 ),
                 child: SfSlider.vertical(
-                      stepSize: 5,
+                      stepSize: 5,                      
                       //thumbColor: Colors.orange.shade600,
                       //allowedInteraction: SliderInteraction.tapAndSlide,
-                      activeColor: slidersColor.elementAt(i),
+                      activeColor: slidersColor.elementAt(i),                      
                       //divisions: 10,
                       max: 210,
                       min: sliderDefaultValue,
@@ -466,6 +469,21 @@ class _CraftyPathState extends State<CraftyPath> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        drawer: Drawer(
+          child: Column(
+            children: [
+              Spacer(flex: 2,),
+              Container(
+                decoration: BoxDecoration(color:  Colors.orange.shade100),
+                child: Row(                  
+                  children: [ Spacer(flex: 1,),Text("LED BRIGHTNESS %:"),Spacer(flex: 5,),],
+                   
+                  ),
+              ),
+              Spacer(flex: 1,),
+            ],
+            ),
+        ),
         appBar: AppBar(
           backgroundColor: Colors.orange.shade700,
           title: const Text("Crafty Path"),
@@ -473,7 +491,7 @@ class _CraftyPathState extends State<CraftyPath> {
         ),
         body: Column(
           children: [
-            const SizedBox(height: 10),
+            //const Spacer(flex: 1),
             Column(
               children: [
                 Row(
@@ -566,7 +584,7 @@ class _CraftyPathState extends State<CraftyPath> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Slider(
-                      max: 600,
+                      max: 500,
                       min: 150,
                       divisions: 45,
                       activeColor: sesionTime > 300
@@ -655,9 +673,7 @@ class _CraftyPathState extends State<CraftyPath> {
               ],
             ),
             slidersRow,
-            const SizedBox(
-              height: 10,
-            ),
+            const Spacer(flex: 2),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor:
@@ -666,7 +682,7 @@ class _CraftyPathState extends State<CraftyPath> {
               onPressed: connected ? startStopPath : null,
               child: Text(startStopBtnText),
             ),
-            const SizedBox(height: 10),
+            const Spacer(flex: 1),
           ],
         ),
       ),
